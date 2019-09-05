@@ -11,10 +11,10 @@ import lombok.val;
 
 
 @SpringBootApplication
-public class Procapweb {
+public class ProcapServer {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(Procapweb.class, args);
+		SpringApplication.run(ProcapServer.class, args);
 	}
 
 	
