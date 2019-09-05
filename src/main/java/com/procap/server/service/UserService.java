@@ -1,17 +1,19 @@
 package com.procap.server.service;
 
-import java.util.Arrays;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.procap.server.model.User;
+import com.procap.server.model.Usuario;
+import com.procap.server.repo.UsuarioRepo;
 
 @Service
 public class UserService {
 
-	public List<User> getUsers() {
-		return Arrays.asList( new User(1, "Anselmo", "Ribeiro"), new User(2, "Luis", "Soares") );
+	@Autowired
+	private UsuarioRepo usuarioRepo;
+
+	public Iterable<Usuario> getUsers() {
+		return this.usuarioRepo.findAll();
 	}
 
 }

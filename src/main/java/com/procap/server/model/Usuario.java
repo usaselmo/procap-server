@@ -1,11 +1,10 @@
 package com.procap.server.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,18 +13,19 @@ import lombok.NonNull;
 @Data
 @AllArgsConstructor
 @Entity
-public class Office {
+@Table(name = "USUARIO")
+public class Usuario {
 
-	public Office() {
+	public Usuario() {
 	}
 
 	@Id
+	@NonNull
 	private Integer id;
 
-	@NonNull
-	private String name;
+	private String nome, sobrenome;
 
-	@ManyToOne(targetEntity = Usuario.class, fetch = FetchType.LAZY)
-	private List<Usuario> users;
+	@ManyToOne(targetEntity = Office.class, fetch = FetchType.EAGER)
+	private Office office;
 
 }

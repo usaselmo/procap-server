@@ -3,8 +3,6 @@ package com.procap.server;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import java.util.List;
-
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +28,7 @@ public class UserServiceTest {
 
 	@Test
 	public void getUser_isList() throws Exception {
-		assertThat(this.userService.getUsers(), CoreMatchers.isA(List.class));
+		assertThat(this.userService.getUsers(), CoreMatchers.isA(Iterable.class));
 	}
 
 }
