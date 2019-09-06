@@ -9,22 +9,28 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import com.procap.server.model.Office;
 import com.procap.server.model.Usuario;
+import com.procap.server.repo.OfficeRepo;
 import com.procap.server.repo.UsuarioRepo;
 
 import lombok.val;
 
 @SpringBootApplication
 public class ProcapServer implements CommandLineRunner {
-	
+
 	@Autowired
 	UsuarioRepo usuarioRepo;
+	@Autowired
+	OfficeRepo officeRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
-		this.usuarioRepo.save(new Usuario(1, "Anselmo", "Ribeiro", null));
-		this.usuarioRepo.save(new Usuario(2, "Marcos", "Ribeiro", null));
-		this.usuarioRepo.save(new Usuario(3, "Esther Lucia", "Ribeiro", null));
+		Office office = new Office(1, "Coelho", null);
+		this.officeRepo.save(office);
+		this.usuarioRepo.save(new Usuario(1, "Anselmo", "Ribeiro", office));
+		this.usuarioRepo.save(new Usuario(2, "Marcos", "Ribeiro", office));
+		this.usuarioRepo.save(new Usuario(3, "Esther Lucia", "Ribeiro", office));
 	}
 
 	public static void main(String[] args) {
